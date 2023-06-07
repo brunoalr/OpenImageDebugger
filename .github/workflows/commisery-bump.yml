@@ -38,6 +38,8 @@ jobs:
         with:
           token: ${{ github.token }}
           create-release: true
+          validate-pull-request: false
+          validate-pull-request-title-bump: false
       - run: echo "Current version is ${{steps.release-version.outputs.current-version}}"
       - if: steps.release-version.outputs.next-version != ''
         run: echo "Version bumped to ${{steps.release-version.outputs.next-version}}"
