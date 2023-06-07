@@ -35,3 +35,5 @@ jobs:
         uses: tomtom-international/commisery-action@7fd0f80be0f8766bad7cd6fb57996ebabb8794c4
         with:
           token: ${{ github.token }}
+          validate-pull-request: false
+          validate-pull-request-title-bump: false
