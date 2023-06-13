@@ -44,8 +44,11 @@ jobs:
             - name: Install dependencies (MacOS)
               if: contains(matrix.os, 'macos')
               run: |
-                tools/arm-brew-setup.sh tools/level-up.sh
-                tools/arm-brew-install tools/level-up.sh qt5 python3
+                mkdir arm-homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C arm-homebrew 
+                alias arm-brew='$(pwd)/arm-homebrew/bin/brew'
+                response=$(arm-brew fetch --force --bottle-tag=arm64_big_sur qt5 python3 | grep "Downloaded to")
+                parsed=($response)
+                arm-brew install $parsed[3]
 
             - name: Install dependencies (Windows)
               if: contains(matrix.os, 'windows')
