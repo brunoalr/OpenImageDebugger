@@ -43,7 +43,6 @@ jobs:
 
             - name: Install dependencies (MacOS)
               if: contains(matrix.os, 'macos')
-              shell: zsh
               run: |
                 setopt sh_word_split
                 mkdir arm-homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C arm-homebrew 
