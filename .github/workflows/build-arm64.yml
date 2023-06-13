@@ -47,7 +47,10 @@ jobs:
               run: |
                 mkdir arm-homebrew && curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C arm-homebrew 
                 alias arm-brew='$(pwd)/arm-homebrew/bin/brew'
-                response=$(arm-brew fetch --force --bottle-tag=arm64_big_sur qt5 python3 | grep "Downloaded to")
+                response=$(arm-brew fetch --force --bottle-tag=arm64_big_sur qt5 | grep "Downloaded to")
+                parsed=($response)
+                arm-brew install $parsed[3]
+                response=$(arm-brew fetch --force --bottle-tag=arm64_big_sur python3 | grep "Downloaded to")
                 parsed=($response)
                 arm-brew install $parsed[3]
 
