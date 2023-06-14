@@ -49,8 +49,8 @@ jobs:
                 PACKAGES=(qt@5 python3)
                 for PACKAGE in "${PACKAGES[@]}"
                 do
-                    brew fetch --force --bottle-tag=arm64_big_sur $PACKAGE
-                    result=$(brew --cache --bottle-tag=arm64_monterey $PACKAGE)
+                    brew fetch --force --bottle-tag=arm64_ventura $PACKAGE
+                    result=$(brew --cache --bottle-tag=arm64_ventura $PACKAGE)
                     echo "Looking for arm64 version of $result"
                     brew install $result
                 done
