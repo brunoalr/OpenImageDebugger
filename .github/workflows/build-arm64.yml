@@ -45,14 +45,14 @@ jobs:
               if: contains(matrix.os, 'macos')
               shell: zsh {0}
               run: |
-                brew install qt5
-                PACKAGES=(qt@5 python3)
+                #brew install qt5
+                PACKAGES=(qt5)
                 for PACKAGE in "${PACKAGES[@]}"
                 do
                     brew fetch --force --bottle-tag=arm64_ventura $PACKAGE
                     result=$(brew --cache --bottle-tag=arm64_ventura $PACKAGE)
                     echo "Looking for arm64 version of $result"
-                    brew install $result
+                    brew reinstall $result
                 done
 
             - name: Install dependencies (Windows)
