@@ -45,7 +45,7 @@ jobs:
               if: contains(matrix.os, 'macos')
               shell: zsh {0}
               run: |
-                #brew install qt5
+                brew install qt5
                 PACKAGES=(qt5)
                 for PACKAGE in "${PACKAGES[@]}"
                 do
@@ -69,7 +69,7 @@ jobs:
 
                 # see https://stackoverflow.com/a/24470998/5843895 and https://cliutils.gitlab.io/modern-cmake/chapters/intro/running.html
                 cmake -S . -B build -DCMAKE_INSTALL_PREFIX=out -DCMAKE_CXX_COMPILER_TARGET=arm64-apple-darwin20.1.0
-                cmake --build build --config Release --target install -j 2
+                VERBOSE=1 cmake --build build --config Release --target install -j 2
 
             - name: Tar files
               shell: bash
