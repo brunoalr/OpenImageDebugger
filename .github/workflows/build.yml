@@ -36,7 +36,7 @@ jobs:
                 os: [ ubuntu-20.04, ubuntu-22.04, macos-12, macos-13, windows-2019, windows-2022 ]
         runs-on: ${{ matrix.os }}
         steps:
-            - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+            - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f
               with:
                 fetch-depth: 0
                 submodules: 'recursive'
